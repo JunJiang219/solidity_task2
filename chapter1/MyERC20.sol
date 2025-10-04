@@ -3,6 +3,7 @@ pragma solidity ^0.8.30;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {IERC20Errors} from "@openzeppelin/contracts/interfaces/draft-IERC6093.sol";
 
+// sepolia 测试网合约地址： 0x917855197f9EB48Bf39A3fB2EC1fbaE1db732Fa2
 contract MyERC20 is IERC20, IERC20Errors {
     mapping(address account => uint256) private _balances;
     mapping (address account => mapping (address spender => uint256)) private _allowances;
@@ -11,6 +12,7 @@ contract MyERC20 is IERC20, IERC20Errors {
 
     constructor() {
         _owner = msg.sender;
+        mint(_owner, 10000);    // 给合约拥有者发 10000 代币
     }
 
     // 代币总供应量
